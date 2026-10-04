@@ -10,6 +10,7 @@ import {
   utcToDatetimeLocalInput,
   getDefaultLocalDeadline,
   formatSecondsToHumanReadable,
+  convertMinutesToMilliseconds
 } from '../src/lib/time';
 
 function runTemporalEngineTestSuite() {
@@ -247,6 +248,22 @@ function runTemporalEngineTestSuite() {
   assert.strictEqual(formatSecondsToHumanReadable(3665), '1h 1m 5s');
   assert.strictEqual(formatSecondsToHumanReadable(7325), '2h 2m 5s');
   console.log('✅ formatSecondsToHumanReadable tests passed cleanly.\n');
+
+  // ----------------------------------------------------------------
+  // 10. MINUTES TO MILLISECONDS CONVERSION
+  // ----------------------------------------------------------------
+  console.log('10. Testing Minutes <-> Milliseconds Conversions...');
+
+  // CASE 1 — Minutes are positive
+  const targetMms = 300000;
+  const MinutesConverted = convertMinutesToMilliseconds(5);
+  assert.strictEqual(MinutesConverted, targetMms);
+  console.log('✅ Case 1: Positive minutes properly converted.');
+
+  // CASE 2 — Minutes are negative
+  const NegativeMinutesConverted = convertMinutesToMilliseconds(-5);
+  assert.strictEqual(NegativeMinutesConverted, 0);
+  console.log('✅ Case 2: Negative minutes handled properly.');
 
   console.log('================================================================');
   console.log('🎉 ALL TEMPORAL ENGINE & TIMEZONE UNIT TESTS PASSED CLEANLY');
