@@ -1,5 +1,7 @@
 // PACT Core Domain TypeScript Type Definitions
 
+import type { FontScale } from '@/lib/ui/font-scale';
+
 export type GoalStatus = 'active' | 'completed' | 'archived';
 export type ProjectStatus = 'active' | 'completed' | 'paused' | 'archived';
 export type TaskPriority = 'low' | 'medium' | 'high' | 'urgent';
@@ -418,6 +420,10 @@ export interface NotificationPreferences {
   alertTone: AlertTone;
 }
 
+export interface WorkspacePreferences {
+  fontScale: FontScale;
+}
+
 export interface SettingsOverviewData {
   profile: UserProfileSettings;
   account: UserAccountInfo;
@@ -425,6 +431,7 @@ export interface SettingsOverviewData {
   consequenceDefinitions: ConsequenceDefinition[];
   integrations: IntegrationStatus[];
   notifications: NotificationPreferences;
+  preferences: WorkspacePreferences;
 }
 
 // Phase 5B Notification Domain Types
